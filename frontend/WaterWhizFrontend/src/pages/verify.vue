@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     verifyCode() {
-      if (this.code == "sffcghhhh") {
+      if (this.code == "virdi") {
         window.localStorage.setItem("isVerified", true);
         this.$router.push("/home");
       } else {
