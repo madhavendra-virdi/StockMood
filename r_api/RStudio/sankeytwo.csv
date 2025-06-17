@@ -1,0 +1,16 @@
+source,target,value
+Panacea Biotech Ltd.,BSE,100
+Panacea Biotech Ltd.,Twitter,70
+Panacea Biotech Ltd.,Reddit,40
+BSE,reporting,65
+BSE,annoucements,25
+BSE,corporate actions,10
+Twitter,annoucements,40
+Twitter,reporting,5
+Twitter,corporate actions,5
+Twitter,Discussion,10
+Twitter,Due Dilligence,10
+Reddit,Discussion,25
+Reddit,Meme,5
+Reddit,YOLO,5
+Reddit,Due Dilligence,5

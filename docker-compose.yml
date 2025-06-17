@@ -1,0 +1,72 @@
+
+
+services:
+  # MySQL database
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_container
+    environment:
+      MYSQL_DATABASE: my_database
+      MYSQL_ROOT_PASSWORD: stockpulse
+      MYSQL_USER: stock_user
+      MYSQL_PASSWORD: stock_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mysql/mysql-files:/var/lib/mysql-files
+
+    command: --secure-file-priv=/var/lib/mysql-files
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+      timeout: 5s
+
+  # Flask backend
+  backend:
+    build:
+      context: ./backend/Flask
+      dockerfile: Dockerfile
+    container_name: backend
+    volumes:
+      - ../mysql/data:/app/data
+    ports:
+      - "5000:5000"
+    command: gunicorn app:app --bind 0.0.0.0:5000 --timeout 120
+    networks:
+      - app-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  # Vue frontend
+  frontend:
+    build:
+      context: ./frontend/WaterWhizFrontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:80"
+    networks:
+      - app-network
+
+  # RStudioAPI
+  rstudioapi:
+    build:
+      context: ./r_api
+      dockerfile: Dockerfile
+    container_name: r_studioapi
+    ports:
+      - "8003:8000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql-data:

@@ -1,0 +1,12 @@
+name: FMpage
+title: FMpage
+username: stockpulse
+account: stockpulse
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13760697
+bundleId: 9673655
+url: https://stockpulse.shinyapps.io/FMpage/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

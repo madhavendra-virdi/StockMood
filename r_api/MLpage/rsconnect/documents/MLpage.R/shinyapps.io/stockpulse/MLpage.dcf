@@ -1,0 +1,12 @@
+name: MLpage
+title: MLpage
+username: stockpulse
+account: stockpulse
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13760619
+bundleId: 9673421
+url: https://stockpulse.shinyapps.io/MLpage/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

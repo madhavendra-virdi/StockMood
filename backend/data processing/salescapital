@@ -1,0 +1,78 @@
+                                       sales_to_capital_23-22                                             sales_to_capital_24-23
+MCap_category                                  Large            Micro       Mid        Nano      Small            Large            Micro       Mid        Nano       Small
+Sub-Industry
+Aerospace/Defense                              1.493687              NaN        NaN        NaN  -0.500000         1.027575              NaN        NaN        NaN   -0.090909
+Apparel                                        1.994152        -0.830422   5.372922  13.233218   1.845835        -0.273319         6.312011 -11.980686       -inf    0.888047
+Auto & Truck                                  -0.084083              NaN        NaN        NaN        NaN         2.475883              NaN        NaN        NaN         NaN
+Auto Parts                                     4.471389         0.511713   0.473067        NaN   4.126434         1.133434        -1.511427   2.943647        NaN    1.831129
+Beverage (Alcoholic)                          47.485714              NaN        NaN        NaN   3.368421         2.076667              NaN        NaN        NaN    0.847458
+Beverage (Soft)                                2.861842              NaN        NaN        NaN        NaN         0.848861              NaN        NaN        NaN         NaN
+Broadcasting                                   0.172350         0.818182  -1.507692   0.666667   0.159021         0.411622        -2.500000   5.545455   0.666667    1.897436
+Brokerage & Investment Banking                      NaN        -3.657751   0.925112  -3.894561  -0.177238              NaN         3.238366   1.612207  -0.546834    0.643930
+Building Materials                             3.321422         2.601283 -46.332759 -34.052632 -10.716947         1.466330         1.234233   0.606305   4.835714   15.691000
+Business & Consumer Services                        NaN              NaN  15.268722   0.386579   8.967742              NaN              NaN  34.070175   2.835335 -290.400000
+Cable TV                                            NaN        -3.571429        NaN  -4.222222   0.649009              NaN         0.329154        NaN   9.500000    0.603363
+Chemical (Basic)                               3.126963         3.198691   1.045276        NaN   1.602239         0.130008         2.812169   1.028246        NaN    4.347631
+Chemical (Diversified)                         1.670414              NaN  35.211260        NaN        NaN        -0.261419              NaN  -2.569200        NaN         NaN
+Chemical (Specialty)                           3.468861        -1.442308  -4.425220        NaN   0.007469        -1.230771         2.461538  -0.917744        NaN  -12.520799
+Coal & Related Energy                          1.541124              NaN   0.793782        NaN        NaN         0.169110              NaN  -3.126888        NaN         NaN
+Computer Services                              4.704482         1.064496   2.415093        NaN  -0.905536         0.960611        -5.469129   1.037398        NaN    0.437965
+Construction Supplies                         -7.415946        -0.583333   5.602701  -5.327586   1.589122         0.681796       -10.200000   2.440755   0.000000    0.641454
+Diversified                                    3.264414         0.015686   0.322004        NaN  -0.380126         0.382336         0.202020  -0.163288        NaN    0.290917
+Drugs (Biotechnology)                          0.134039              NaN        NaN        NaN        NaN        20.586207              NaN        NaN        NaN         NaN
+Drugs (Pharmaceutical)                         0.558559        -0.860235   1.744943        NaN   0.524772         2.500657         1.540293   2.624860        NaN   -0.030199
+Education                                           NaN        -0.182254        NaN   1.500000   7.934312              NaN         0.533333        NaN  -0.098592   -0.803030
+Electrical Equipment                           2.168587         2.238358   3.123241        NaN   7.123215         0.857357        -3.305195   0.711740        NaN    1.140663
+Electronics (General)                               NaN              NaN   5.960000        NaN -13.684615              NaN              NaN   1.687023        NaN   -0.262602
+Engineering/Construction                       5.597386         0.868886  10.463784  -3.060345   0.892961         3.780210         7.166667  -0.499627   2.876068   -1.569999
+Entertainment                                       NaN        -0.337510  -2.162636        NaN  -1.875438              NaN        -2.690476   5.060072        NaN    0.779634
+Environmental & Waste Services                      NaN              NaN   2.269231        NaN  -0.230769              NaN              NaN   1.287770        NaN    0.416667
+Farming/Agriculture                            1.935811         0.625000   0.905303        NaN   1.139552         0.427411        -0.100000   0.059016        NaN    0.284979
+Financial Svcs. (Non-bank & Insurance)         0.508815        -9.825203   0.684819  -5.137456   6.136364        -0.043077       -17.296025   1.934482   5.641702    1.325581
+Food Processing                                0.970670         0.287741   6.800515   4.470367   1.180148         0.776351         2.190577  -0.019706  -5.528169    1.672414
+Food Wholesalers                                    NaN              NaN        NaN   0.080282  -8.648649              NaN              NaN        NaN   0.174312   -6.894737
+Furn/Home Furnishings                               NaN         4.888889   3.736254        NaN        NaN              NaN        -1.000000   0.106761        NaN         NaN
+Green & Renewable Energy                       0.266776         2.493369        NaN        NaN        NaN        -0.204746         2.625571        NaN        NaN         NaN
+Healthcare Products                            1.096591              NaN        NaN        NaN        NaN         1.027668              NaN        NaN        NaN         NaN
+Healthcare Support Services                   -1.346154              NaN        NaN        NaN        NaN        21.000000              NaN        NaN        NaN         NaN
+Heathcare Information and Technology          -1.148219        -1.185284        NaN        NaN        NaN         0.097136        -1.655433        NaN        NaN         NaN
+Hospitals/Healthcare Facilities                1.556060         0.000000        NaN        NaN        NaN         1.161258             -inf        NaN        NaN         NaN
+Hotel/Gaming                                   9.315315        -1.582388   2.571429        NaN       -inf         0.937143        -0.587121   0.752000        NaN   -0.012421
+Household Products                                  NaN              NaN        NaN        NaN   3.903226              NaN              NaN        NaN        NaN    0.583333
+Information Services                          -1.771930              NaN        NaN        NaN   1.720000         0.663848              NaN        NaN        NaN    0.514124
+Investments & Asset Management                 0.169118         3.297012  -1.749676  -0.500000   0.094573         0.010636         0.719886  -0.299561   0.034337    0.087578
+Machinery                                      1.638808              inf   7.425189        NaN   1.164724         0.576465         0.703606   0.891868        NaN    0.581808
+Metals & Mining                               18.544529              NaN   3.702532        NaN   0.305344         2.704683              NaN   0.801782        NaN    1.251257
+Oil/Gas (Integrated)                           3.405815              NaN        NaN        NaN        NaN        -0.607210              NaN        NaN        NaN         NaN
+Oil/Gas (Production and Exploration)           1.014756              NaN        NaN        NaN        NaN        -0.287734              NaN        NaN        NaN         NaN
+Oil/Gas Distribution                                NaN         0.545455   1.790640        NaN  -0.276971              NaN         0.125000  -0.285996        NaN    0.322835
+Oilfield Svcs/Equip.                          19.568974        -7.416667        NaN        NaN   1.611111        -3.422028        -6.600000        NaN        NaN    0.944984
+Packaging & Container                               NaN              NaN   2.127479        NaN  -0.850424              NaN              NaN   2.553180        NaN   -0.339116
+Paper/Forest Products                               NaN         1.840278   2.455789        NaN   0.203252              NaN        -0.375000   0.414347        NaN   -6.382716
+Power                                          2.363018        -2.122605  -2.437960        NaN   0.403551         0.593616         1.084672   0.084722        NaN   -0.519561
+Publishing & Newspapers                             NaN              NaN        NaN  -1.921569   2.356003              NaN              NaN        NaN  29.212500    0.938916
+Real Estate (Development)                      0.450326       -29.117204  -6.746650  -6.220499  -3.403667         0.037859         7.187286   2.136931   2.052128   -0.323599
+Real Estate (General/Diversified)              2.530207              NaN        NaN        NaN  -1.695641         0.775552              NaN        NaN        NaN         inf
+Real Estate (Operations & Services)                 NaN         0.061826        NaN        NaN        NaN              NaN         3.754124        NaN        NaN         NaN
+Restaurant/Dining                              1.408503              NaN   2.785714        NaN        NaN         0.277716              NaN   0.626374        NaN         NaN
+Retail (Building Supply)                            NaN              NaN        NaN        NaN  38.380952              NaN              NaN        NaN        NaN    5.215686
+Retail (Distributors)                          2.595802         5.036193        NaN  -4.000000   7.101911        -1.715964         2.357143        NaN   0.500000    1.340043
+Retail (General)                                    NaN         0.744681   3.853846        NaN   0.111111              NaN         1.217391   0.584158        NaN   -2.000000
+Retail (Grocery and Food)                      4.951586              NaN        NaN        NaN        NaN         3.094200              NaN        NaN        NaN         NaN
+Retail (Special Lines)                              NaN              NaN   9.948980        NaN  27.500000              NaN              NaN   3.970812        NaN   -1.187500
+Rubber& Tires                                 13.743139        -2.261062  10.526936        NaN   3.810345        -1.510428         3.488806   3.358215        NaN   -0.229572
+Shipbuilding & Marine                          0.411713              NaN        NaN        NaN  -0.114790         1.710657              NaN        NaN        NaN    1.393103
+Shoe                                                NaN        -1.576923  -4.750000        NaN        NaN              NaN         0.401361   0.135000        NaN         NaN
+Software (Entertainment)                      -0.199211              NaN        NaN        NaN        NaN         0.011175              NaN        NaN        NaN         NaN
+Software (Internet)                                 NaN       -12.000000        NaN        NaN        NaN              NaN         0.846154        NaN        NaN         NaN
+Software (System & Application)                     NaN        -0.729107  -0.761218  -0.059829  -5.567162              NaN         0.000257   0.912234   0.295699    1.323329
+Steel                                          1.276411        -0.116351  -3.122364   0.207547   1.453500         1.002592         3.112900  -1.701771  -0.333333   -2.223168
+Telecom (Wireless)                             0.325415              NaN        NaN        NaN        NaN        -0.917311              NaN        NaN        NaN         NaN
+Telecom. Equipment                                  NaN         2.964286   0.381503        NaN  -5.899941              NaN        11.500000   0.247340        NaN    2.121514
+Telecom. Services                             12.156490              NaN        NaN        NaN   0.326220         0.545011              NaN        NaN        NaN    0.136136
+Tobacco                                        1.367762         2.578501        NaN        NaN        NaN         1.272997        -0.136236        NaN        NaN         NaN
+Transportation                                 2.409772         0.841358   2.030098        NaN   4.480769         0.931003         0.371031   0.638693        NaN   -0.294118
+Transportation (Railroads)                     1.000000              NaN        NaN        NaN        NaN         0.638522              NaN        NaN        NaN         NaN
+Utility (Water)                                     NaN              NaN   0.104396        NaN        NaN              NaN              NaN  -0.331210        NaN         NaN
+
+Process finished with exit code 0

@@ -1,0 +1,9 @@
+flask
+pymysql
+flask_cors
+cryptography
+scikit-learn
+pandas
+requests>=2.0
+gunicorn
+

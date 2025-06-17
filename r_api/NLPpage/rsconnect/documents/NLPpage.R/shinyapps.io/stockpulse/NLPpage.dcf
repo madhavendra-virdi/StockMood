@@ -1,0 +1,12 @@
+name: NLPpage
+title: NLPpage
+username: stockpulse
+account: stockpulse
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13760544
+bundleId: 9673377
+url: https://stockpulse.shinyapps.io/NLPpage/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
