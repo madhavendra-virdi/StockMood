@@ -13,7 +13,7 @@
       <p>MCap: {{ parsedData.MCap }}  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  Category: {{ selectedStock.MCap_category }}</p>
       <br>
     </div>
-
+    <!--testing-->
     <!-- Table Container -->
     <div id="table-container" v-if="selectedStock">
       <table id="data-table">

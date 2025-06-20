@@ -30,5 +30,6 @@ jobs:
         key: ${{ secrets.VPS_SSH_KEY }}
         script: |
           cd ~/StockMood
-          docker compose down
+          git pull origin main
+          docker compose down --remove-orphans
           docker compose up -d --build
