@@ -75,22 +75,23 @@ export default {
 
 <style scoped lang="less">
 .header-wrapper {
-  display: flex;
-  justify-content: center;
-  padding: 24px 0 40px;
-  background: transparent; // Remove black background
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: transparent;
 }
 
 .main-header {
-  width: 92%;
+  width: 100%;
   max-width: 1080px;
-  background: #ffffff; // Light background to match the page
-  border-radius: 20px;
+  margin: auto;
+  background: #ffffff;
+  border-radius: 0 0 20px 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   padding: 12px 0;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  z-index: 10;
-  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 
   .header-container {
     max-width: 100%;

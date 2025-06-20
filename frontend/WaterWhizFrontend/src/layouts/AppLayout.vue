@@ -28,8 +28,8 @@
 import { mapState } from "vuex";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
-
 import Menu from "../components/common/Menu";
+
 export default {
   name: "DefaultLayout",
   components: { AppHeader: Header, Menu, Footer },
@@ -51,12 +51,10 @@ export default {
 .el-container {
   background: #ffffff;
   height: 100%;
-  // width: 1280px;
   margin: 0 auto;
   display: flex;
   overflow: hidden;
 
-  // Left menu
   .el-aside {
     width: @menu-width !important;
     flex-shrink: 0;
@@ -71,7 +69,6 @@ export default {
     }
   }
 
-  // Right content
   .el-main {
     width: 100%;
     height: 100%;
@@ -81,19 +78,25 @@ export default {
     flex-direction: column;
     overflow: hidden;
 
-    &>header {
+    & > header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
       height: @header-height;
-      flex-shrink: 0;
+      background: #ffffff;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     }
 
-    &>main {
+    & > main.main-layout {
       height: 100%;
       overflow-y: auto;
+      padding-top: @header-height;
     }
   }
 }
 
-// Page transition animation
 .fade-enter-active,
 .fade-leave-active {
   transition: all 0.5s;
@@ -103,10 +106,7 @@ export default {
 }
 
 .fade-enter,
-.fade-leave-to
-
-/* .fade-leave-active below version 2.1.8 */
-  {
+.fade-leave-to {
   transform: translateY(900px);
   opacity: 0;
   transition: all 0.5s;
