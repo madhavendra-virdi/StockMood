@@ -87,6 +87,9 @@ export default {
       height: @header-height;
       background: #ffffff;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      width: 100vw;
+      padding: 0;
+      margin: 0;
     }
 
     & > main.main-layout {

@@ -85,7 +85,6 @@ export default {
 
 .main-header {
   width: 100%;
-  max-width: 1080px;
   margin: auto;
   background: #ffffff;
   border-radius: 0 0 20px 20px;
