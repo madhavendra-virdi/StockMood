@@ -32,4 +32,5 @@ jobs:
           cd ~/StockMood
           git pull origin main
           docker compose down --remove-orphans
-          docker compose up -d --build
+          docker compose build --no-cache      # ✅ force rebuild to ensure dist/ is created
+          docker compose up -d
