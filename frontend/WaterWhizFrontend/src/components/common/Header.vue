@@ -1,24 +1,33 @@
 <template>
-  <div class="header-wrapper">
-    <div class="main-header">
-      <div class="header-container">
-        <div class="logo" @click="handleLogoClick">
-          <img src="../../../static/logostockmood.png" class="logo-image" />
-        </div>
-
+  <div class="main-header">
+    <div class="header">
+      <div @click="handleSelect('home')">
+        <img class="logoClass" src="../../../static/logostockmood.png" />
+      </div>
+      <div class="right-menu">
         <el-menu
-          :default-active="activeIndex"
+          :active="activeIndex"
+          class="el-menu-demo"
           mode="horizontal"
-          class="nav-menu"
           @select="handleSelect"
-          background-color="transparent"
-          text-color="#ccc"
-          active-text-color="#ffffff"
         >
+
+          <el-menu-item index="home">Home</el-menu-item>
           <el-menu-item index="insights">Dashboard</el-menu-item>
           <el-menu-item index="pricing">Pricing</el-menu-item>
+
           <el-menu-item v-if="!loggedInUser" index="login">Login</el-menu-item>
-          <el-menu-item v-if="loggedInUser" :index="'profile'">@{{ loggedInUser }}</el-menu-item>
+          <el-menu-item v-if="loggedInUser" :index="'profile'">
+            @{{ loggedInUser }}
+          </el-menu-item>
+
+
+
+
+
+          <!-- <el-menu-item index="4">Visulisation</el-menu-item>
+          <el-menu-item index="5">All Model</el-menu-item>
+          <el-menu-item index="6">About us</el-menu-item> -->
         </el-menu>
       </div>
     </div>
@@ -28,111 +37,134 @@
 <script>
 export default {
   name: "Header",
+
   data() {
     return {
-      activeIndex: "",
-      loggedInUser: null
-    };
+    activeIndex: "1",
+    loggedInUser: null // set it in mounted instead
+  };
   },
   mounted() {
     const storedUser = localStorage.getItem("loggedInUser");
-    this.loggedInUser = storedUser && storedUser !== "null" && storedUser !== "undefined" ? storedUser : null;
+  if (!storedUser || storedUser === "null" || storedUser === "undefined") {
+    this.loggedInUser = null;
+    localStorage.removeItem("loggedInUser");
+  } else {
+    this.loggedInUser = storedUser;
+  }
+
+  this.handleOpen(this.$route);
+    console.log(this.$route.path);
+    // if (this.$route.path === "/home") {
+    //   this.activeIndex = "home";
+    // } else if (this.$route.path === "/calculator") {
+    //   this.activeIndex = "calculator";
+    // } else if (this.$route.path === "/insights") {
+    //   this.activeIndex = "insights";
+    // } else if (this.$route.path === "/catchments") {
+    //   this.activeIndex = "catchments";
+    // }
     this.handleOpen(this.$route);
-    this.$root.$on("forceActiveUpdate", () => {
+    this.$root.$on('forceActiveUpdate', () => {
       this.handleOpen(this.$route);
     });
   },
   watch: {
-    "$route.path"(newPath) {
+    '$route.path'(newPath) {
       this.handleOpen({ path: newPath });
     }
   },
+
   methods: {
-    handleLogoClick() {
-      this.$router.push("/home");
+    handleOpen(to, keyPath) {
+      if (to.path === "/home") {
+        this.activeIndex = "home";
+      } else if (to.path === "/insights") {
+        this.activeIndex = "insights";
+
+      } else if (to.path === "/pricing") {
+        this.activeIndex = "pricing";
+      }else if (to.path === "/login") {
+        this.activeIndex = "login";
+      }else if (to.path === "/profile") {
+        this.activeIndex = "profile";
+      }
     },
-    handleOpen(to) {
-      const map = {
-        "/insights": "insights",
-        "/pricing": "pricing",
-        "/login": "login",
-        "/profile": "profile"
-      };
-      this.activeIndex = map[to.path] || "";
-    },
-    handleSelect(key) {
-      const map = {
-        insights: "/insights",
-        pricing: "/pricing",
-        login: "/login",
-        profile: "/profile"
-      };
-      this.$router.push(map[key]);
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
+      if (key === "home") {
+        this.$router.push("/home");
+      } else if (key === "insights") {
+        this.$router.push("/insights");
+      }else if (key === "login") {
+        this.$router.push("/login");
+      }else if (key === "pricing") {
+        this.$router.push("/pricing");
+      } else if (key === "profile") {
+        this.$router.push("/profile");
+      }
     }
   }
+
 };
 </script>
 
 <style scoped lang="less">
-.header-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background: transparent;
-}
-
+@import "../../assets/style/variable";
 .main-header {
-  width: 100%;
-  margin: auto;
-  background: #ffffff;
-  border-radius: 0 0 20px 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  height: 80px;
+  background: #fff;
 
-  .header-container {
-    max-width: 100%;
-    margin: auto;
+  .header {
+    height: 100%;
+    width: 95%; /* Ensures the header spans the full width */
+    padding: 0 20px; /* Adds some spacing to the edges */
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
+    justify-content: space-between; /* Pushes items to the edges */
 
-    .logo-image {
-      height: 38px;
-      transform: scale(5); // Scale the logo up visually
-      transform-origin: left center; // Anchor scaling from the left
+    .logoClass {
+      margin-top: 0%;
+      width: 350px; /* Adjusted width for better fit */
+      height: auto; /* Ensures aspect ratio is maintained */
       cursor: pointer;
     }
 
-    .nav-menu {
-      background: transparent;
-      border: none;
+    .right-menu {
       display: flex;
-      gap: 8px;
+      align-items: center;
 
       .el-menu-item {
-        font-family: 'Poppins', sans-serif !important;
-        font-size: 15px !important;
-        font-weight: 600 !important;
-        padding: 10px 18px !important;
-        color: #3b82f6 !important; // Your desired color
-        border-radius: 16px !important;
-        transition: all 0.3s ease;
+        font-size: 20px;
+        margin: 0 10px;
+        display: flex;
+        align-items: center;
+      }
 
-        &:hover {
-          color: #1f1e1e !important;
-          background: rgb(51, 51, 51) !important;
-        }
+      .el-menu--horizontal > .el-menu-item.is-active {
+        background: #a9c0e8;
+        border-radius: 47px;
+        color: #fff;
+      }
 
-        &.is-active {
-          color: #fff !important;
-          background: #3b82f6 !important;
-        }
+      .el-menu--horizontal > .el-menu-item {
+        border-bottom: none;
+        border-radius: 47px;
+        height: 48px;
+        line-height: normal;
+      }
+
+      .el-menu--horizontal > .el-menu-item:not(.is-disabled):hover {
+        background: #a9c0e8;
+        border-radius: 47px;
+        color: #fff;
       }
     }
+  }
+
+  /deep/ .el-menu.el-menu--horizontal {
+    border: none;
   }
 }
 
