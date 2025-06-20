@@ -30,3 +30,52 @@ html {
 .el-transfer__buttons {
   padding: 0 16px !important;
 }
+
+/* --- Global Mobile Styles --- */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+  }
+
+  #app {
+    min-width: 100% !important;
+    padding: 0 10px;
+  }
+
+  .container, .home_box, .insights_box, .text_box {
+    padding: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .banner img,
+  iframe,
+  video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+  }
+
+  .title {
+    font-size: 18px !important;
+    text-align: center;
+  }
+
+  .search-container input,
+  .button,
+  .tab-buttons {
+    width: 100% !important;
+    font-size: 14px;
+  }
+
+  .tab-buttons {
+    flex-direction: column !important;
+    gap: 10px;
+  }
+
+  .el-transfer__buttons {
+    padding: 0 !important;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
