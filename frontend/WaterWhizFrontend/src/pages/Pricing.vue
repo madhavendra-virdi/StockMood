@@ -177,7 +177,7 @@ export default {
 }
 
 .plan button {
-  background: #4f80ff;
+  background: #a9c0e8;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -186,7 +186,7 @@ export default {
 }
 
 .plan.popular {
-  border: 2px solid #4f80ff;
+  border: 2px solid #a9c0e8;
   background: #eef3ff;
   position: relative;
 }
@@ -195,7 +195,7 @@ export default {
   position: absolute;
   top: -10px;
   right: -10px;
-  background: #4f80ff;
+  background: #a9c0e8;
   color: white;
   padding: 5px 10px;
   border-radius: 12px;
@@ -203,7 +203,7 @@ export default {
 }
 
 .plan .highlighted {
-  background: #2c60ff;
+  background: #a9c0e8;
 }
 
 .compare-plans {
