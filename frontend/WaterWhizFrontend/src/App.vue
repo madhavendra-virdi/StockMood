@@ -12,7 +12,10 @@ export default {
 
 <style lang="less">
 @import "assets/style/style";
-* {
-  box-sizing: content-box !important;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
+
 </style>

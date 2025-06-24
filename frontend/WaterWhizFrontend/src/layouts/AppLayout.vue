@@ -124,4 +124,20 @@ export default {
   background: #a9c0e8;
   color: #fff !important;
 }
+@media (max-width: 768px) {
+  .el-main > header {
+    height: 60px; // smaller header
+  }
+
+  .main-layout {
+    padding-top: 60px !important;
+  }
+
+  .el-backtop {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
 </style>

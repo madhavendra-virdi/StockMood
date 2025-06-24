@@ -722,5 +722,60 @@ export default {
 //   }
 // }
 
+@media (max-width: 768px) {
+  .banner {
+    height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .text_box {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem;
+    top: 100px;
+
+    .text_box_child {
+      width: 100%;
+      padding: 0;
+
+      .title {
+        font-size: 2rem;
+        line-height: 1.4;
+        text-align: center;
+      }
+
+      .search-container {
+        margin-top: 1rem;
+        width: 100%;
+
+        .search-bar {
+          font-size: 1rem;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: auto;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .background-image {
+    position: static;
+    width: 60px;
+    height: 60px;
+    animation: none;  // disable animation on mobile for better layout
+    opacity: 1;
+  }
+}
 
 </style>
