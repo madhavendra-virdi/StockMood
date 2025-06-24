@@ -61,16 +61,28 @@ function(stock_name = "") {
   p <- plot_ly(compare_df, x = ~Type, y = ~Value, type = 'bar', color = ~Type,
                colors = c('#a9c0e8', '#f4f4f4')) %>%
     layout(
-      title = list(
-        text = paste("Price vs Predicted Share Price for", stock_name),
-        x = 0.5,
-        xanchor = "center",
-        font=list(size=12)
-      ),
+      title = "",  # Remove default title
       yaxis = list(title = "Price"),
       xaxis = list(title = ""),
-      margin = list(t = 100)  # <-- This adds top spacing
+      margin = list(t = 100),  # Space for annotation
+      annotations = list(
+        list(
+          text = paste0(
+            '<div style="overflow-x:auto; white-space:nowrap; font-size:14px; font-weight:bold; padding:4px;">',
+            "Price vs Predicted Share Price for ", stock_name,
+            '</div>'
+          ),
+          xref = "paper",
+          yref = "paper",
+          x = 0.5,
+          y = 1.15,
+          showarrow = FALSE,
+          xanchor = "center",
+          align = "center"
+        )
+      )
     )
+
 
   
   # Save & return
@@ -133,11 +145,17 @@ function(stock_name = "") {
     hole = 0.5
   ) %>%
     layout(
-      title = list(
-        text = paste("Market Share in", sub_industry_val, "Sub-Industry"),
-        x = 0.5,
-        xanchor = "center",
-        font = list(size = 12)
+      annotations = list(
+        list(
+          text = paste0('<div style="overflow-x:auto; white-space:nowrap; width:100%; font-size:14px;"><b>Market Share in ', sub_industry_val, ' Sub-Industry</b></div>'),
+          xref = 'paper',
+          yref = 'paper',
+          x = 0.5,
+          y = 1.15,
+          showarrow = FALSE,
+          xanchor = 'center',
+          align = 'center'
+        )
       ),
       showlegend = FALSE,
       margin = list(t = 100)
@@ -213,22 +231,35 @@ function(stock_name = "") {
                text = ~paste0(Name, "<br>DE: ", round(DE, 2))
   ) %>%
     layout(
-      title = list(
-        text = paste0("Debt-to-Equity Ratio in ", sub_industry_val, " Sub-Industry"),
-        x = 0.5,
-        xanchor = "center",
-        font=list(size=12)
-      ),
+      title = "",  # Hide the default title
       xaxis = list(title = "", showticklabels = FALSE),
       yaxis = list(title = "Debt-to-Equity"),
       margin = list(t = 100),
+      annotations = list(
+        list(
+          text = paste0(
+            '<div style="overflow-x:auto; white-space:nowrap; font-size:14px; font-weight:bold; padding:4px;">',
+            "Debt-to-Equity Ratio in ", sub_industry_val, " Sub-Industry",
+            '</div>'
+          ),
+          xref = "paper",
+          yref = "paper",
+          x = 0.5,
+          y = 1.15,
+          showarrow = FALSE,
+          xanchor = "center",
+          align = "center"
+        )
+      ),
       shapes = list(
-        list(type = "line",
-            x0 = -0.5,
-            x1 = length(data$Name) - 0.5,
-            y0 = mean(data$DE, na.rm = TRUE),
-            y1 = mean(data$DE, na.rm = TRUE),
-            line = list(dash = "dash", color = "#6e9fcf", width = 1))
+        list(
+          type = "line",
+          x0 = -0.5,
+          x1 = length(data$Name) - 0.5,
+          y0 = mean(data$DE, na.rm = TRUE),
+          y1 = mean(data$DE, na.rm = TRUE),
+          line = list(dash = "dash", color = "#6e9fcf", width = 1)
+        )
       )
     )
 
