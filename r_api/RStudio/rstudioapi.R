@@ -65,6 +65,7 @@ function(stock_name = "") {
         text = paste("Price vs Predicted Share Price for", stock_name),
         x = 0.5,
         xanchor = "center"
+        font=list(size=16)
       ),
       yaxis = list(title = "Price"),
       xaxis = list(title = ""),
@@ -132,8 +133,14 @@ function(stock_name = "") {
     hole = 0.5
   ) %>%
     layout(
-      title = paste("Market Share in", sub_industry_val, "Sub-Industry"),
-      showlegend = FALSE
+      title = list(
+        text = paste("Market Share in", sub_industry_val, "Sub-Industry"),
+        x = 0.5,
+        xanchor = "center",
+        font = list(size = 16)
+      ),
+      showlegend = FALSE,
+      margin = list(t = 100)
     )
   
   # Convert plot to HTML
@@ -210,6 +217,7 @@ function(stock_name = "") {
         text = paste0("Debt-to-Equity Ratio in ", sub_industry_val, " Sub-Industry"),
         x = 0.5,
         xanchor = "center"
+        font=list(size=16)
       ),
       xaxis = list(title = "", showticklabels = FALSE),
       yaxis = list(title = "Debt-to-Equity"),
