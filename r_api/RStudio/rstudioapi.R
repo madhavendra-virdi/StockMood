@@ -60,9 +60,17 @@ function(stock_name = "") {
   
   p <- plot_ly(compare_df, x = ~Type, y = ~Value, type = 'bar', color = ~Type,
                colors = c('#a9c0e8', '#f4f4f4')) %>%
-    layout(title = paste("Price vs Predicted Share Price for", stock_name),
-           yaxis = list(title = "Price"),
-           xaxis = list(title = ""))
+    layout(
+      title = list(
+        text = paste("Price vs Predicted Share Price for", stock_name),
+        x = 0.5,
+        xanchor = "center"
+      ),
+      yaxis = list(title = "Price"),
+      xaxis = list(title = ""),
+      margin = list(t = 100)  # <-- This adds top spacing
+    )
+
   
   # Save & return
   tmp_file <- tempfile(fileext = ".html")
@@ -198,18 +206,24 @@ function(stock_name = "") {
                text = ~paste0(Name, "<br>DE: ", round(DE, 2))
   ) %>%
     layout(
-      title = paste0("Debt-to-Equity Ratio in ", sub_industry_val, " Sub-Industry"),
+      title = list(
+        text = paste0("Debt-to-Equity Ratio in ", sub_industry_val, " Sub-Industry"),
+        x = 0.5,
+        xanchor = "center"
+      ),
       xaxis = list(title = "", showticklabels = FALSE),
       yaxis = list(title = "Debt-to-Equity"),
+      margin = list(t = 100),
       shapes = list(
         list(type = "line",
-             x0 = -0.5,
-             x1 = length(data$Name) - 0.5,
-             y0 = mean(data$DE, na.rm = TRUE),
-             y1 = mean(data$DE, na.rm = TRUE),
-             line = list(dash = "dash", color = "#6e9fcf", width = 1))
+            x0 = -0.5,
+            x1 = length(data$Name) - 0.5,
+            y0 = mean(data$DE, na.rm = TRUE),
+            y1 = mean(data$DE, na.rm = TRUE),
+            line = list(dash = "dash", color = "#6e9fcf", width = 1))
       )
     )
+
   
   # Save as self-contained HTML
   tmp_file <- tempfile(fileext = ".html")

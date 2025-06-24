@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Shiny Container -->
-    <div style="display: flex; width: 100%; box-sizing: border-box;">
+    <div class="responsive-plot-container">
   <!-- Left: Market Share Donut Chart -->
   <div style="width: 50%; padding-right: 10px; box-sizing: border-box;">
     <h3>Market Share Donut Chart</h3>
@@ -226,4 +226,24 @@ export default {
   cursor: pointer;
   transition: background 0.3s ease-out;
 }
+/* change for mobile interface*/ 
+.responsive-plot-container {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.responsive-plot-container > div {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .responsive-plot-container > div {
+    width: 50%;
+  }
+}
+
 </style>
