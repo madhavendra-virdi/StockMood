@@ -277,6 +277,18 @@ export default {
   z-index: 100;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
+
+@media (max-width: 768px) {
+  .top-row {
+    flex-direction: column;
+  }
+
+  .sankey-width,
+  .wordcloud-width {
+    width: 100%;
+  }
+}
+
 </style>
 
 <template>
