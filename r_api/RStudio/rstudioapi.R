@@ -64,7 +64,7 @@ function(stock_name = "") {
       title = list(
         text = paste("Price vs Predicted Share Price for", stock_name),
         x = 0.5,
-        xanchor = "center"
+        xanchor = "center",
         font=list(size=16)
       ),
       yaxis = list(title = "Price"),
@@ -216,7 +216,7 @@ function(stock_name = "") {
       title = list(
         text = paste0("Debt-to-Equity Ratio in ", sub_industry_val, " Sub-Industry"),
         x = 0.5,
-        xanchor = "center"
+        xanchor = "center",
         font=list(size=16)
       ),
       xaxis = list(title = "", showticklabels = FALSE),
