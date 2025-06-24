@@ -6,7 +6,7 @@
   <div class="plot-column left-plot">
     <h3>Market Share Donut Chart</h3>
     <div v-if="iframeSrc" class="plot-container">
-  <iframe :src="iframeSrc" width="100%" height="600" frameborder="0"></iframe>
+  <iframe :src="iframeSrc"></iframe>
 </div>
 <div v-else>
   <p>No visualization available for the selected stock.</p>
@@ -251,5 +251,21 @@ export default {
     padding-left: 10px;
   }
 }
+
+.plot-container {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* Maintain aspect ratio (1:1), change if needed */
+}
+
+.plot-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+}
+
 
 </style>
