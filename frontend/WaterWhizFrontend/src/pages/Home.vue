@@ -769,15 +769,15 @@ export default {
     object-fit: contain;
     position: absolute;
     opacity: 0.9;
-    animation: moveHorizontal 10s infinite linear;
+    animation: moveHorizontal 5s infinite linear;
     top: 15px;
   }
 
-  .background-image:nth-child(1) { left: -100px; animation-delay: 0s; }
-  .background-image:nth-child(2) { left: -250px; animation-delay: 1s; }
-  .background-image:nth-child(3) { left: -400px; animation-delay: 2s; }
-  .background-image:nth-child(4) { left: -550px; animation-delay: 3s; }
-  .background-image:nth-child(5) { left: -700px; animation-delay: 4s; }
+  .background-image:nth-child(1) { left: -150px; animation-delay: 0s; }
+  .background-image:nth-child(2) { left: -150px; animation-delay: 1s; }
+  .background-image:nth-child(3) { left: -150px; animation-delay: 2s; }
+  .background-image:nth-child(4) { left: -150px; animation-delay: 3s; }
+  .background-image:nth-child(5) { left: -150px; animation-delay: 4s; }
 }
 
 
