@@ -729,24 +729,22 @@ export default {
   }
 
   .text_box {
+    top: 100px;
+    padding: 0 1rem;
     flex-direction: column;
     align-items: center;
-    padding: 0 1rem;
-    top: 100px;
 
     .text_box_child {
       width: 100%;
-      padding: 0;
+      text-align: center;
 
       .title {
         font-size: 2rem;
         line-height: 1.4;
-        text-align: center;
       }
 
       .search-container {
-        margin-top: 1rem;
-        width: 100%;
+        margin-top: 1.5rem;
 
         .search-bar {
           font-size: 1rem;
@@ -757,25 +755,30 @@ export default {
   }
 }
 
+
 @media (max-width: 768px) {
   .image-container {
+    height: 120px;
+    margin: 40px 0;
+    overflow: hidden;
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    height: auto;
-    gap: 1rem;
-    padding: 1rem;
   }
 
   .background-image {
-    position: static;
-    width: 60px;
-    height: 60px;
-    animation: none;  // disable animation on mobile for better layout
-    opacity: 1;
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    opacity: 0.8;
+    animation: moveHorizontal 10s infinite linear;
+    position: absolute;
+    top: 25px;
   }
+
+  .background-image:nth-child(1) { left: -100px; animation-delay: 0s; }
+  .background-image:nth-child(2) { left: -100px; animation-delay: 1s; }
+  .background-image:nth-child(3) { left: -100px; animation-delay: 2s; }
+  .background-image:nth-child(4) { left: -100px; animation-delay: 3s; }
+  .background-image:nth-child(5) { left: -100px; animation-delay: 4s; }
 }
 
 </style>
