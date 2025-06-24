@@ -3,7 +3,7 @@
     <!-- Shiny Container -->
     <div class="responsive-plot-container">
   <!-- Left: Market Share Donut Chart -->
-  <div style="width: 50%; padding-right: 10px; box-sizing: border-box;">
+  <div class="plot-column left-plot">
     <h3>Market Share Donut Chart</h3>
     <div v-if="iframeSrc" class="plot-container">
   <iframe :src="iframeSrc" width="100%" height="600" frameborder="0"></iframe>
@@ -14,7 +14,7 @@
   </div>
 
   <!-- Right: DE Plot -->
-  <div style="width: 50%; padding-left: 10px; box-sizing: border-box;">
+  <div class="plot-column right-plot">
     <h3>Debt-to-Equity (DE) Chart</h3>
     <div v-if="iframeSrc2" class="plot-container">
   <iframe :src="iframeSrc2" width="100%" height="600" frameborder="0"></iframe>
@@ -241,8 +241,14 @@ export default {
 }
 
 @media (min-width: 768px) {
-  .responsive-plot-container > div {
+  .plot-column {
     width: 50%;
+  }
+  .left-plot {
+    padding-right: 10px;
+  }
+  .right-plot {
+    padding-left: 10px;
   }
 }
 
