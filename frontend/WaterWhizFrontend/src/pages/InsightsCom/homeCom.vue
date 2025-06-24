@@ -265,4 +265,26 @@ export default {
 .blue-row {
   background: #e8f0fe !important;
 }
+@media (max-width: 1024px) {
+  #lower-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #left-table-container {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .plot-container {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .plot-container iframe {
+    width: 100% !important;
+    height: 500px;
+  }
+}
+
 </style>

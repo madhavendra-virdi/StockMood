@@ -576,7 +576,7 @@ export default {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(110vw); /* Move completely off-screen to the right */
+    transform: translateX(calc(110vw+100px)); /* Move completely off-screen to the right */
   }
 }
 
