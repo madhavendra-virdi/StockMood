@@ -723,16 +723,11 @@ export default {
 // }
 
 @media (max-width: 768px) {
-  .banner {
-    height: auto;
-    padding: 2rem 1rem;
-  }
-
   .text_box {
-    top: 100px;
-    padding: 0 1rem;
     flex-direction: column;
     align-items: center;
+    padding: 0 1rem;
+    top: 100px;
 
     .text_box_child {
       width: 100%;
@@ -740,15 +735,17 @@ export default {
 
       .title {
         font-size: 2rem;
-        line-height: 1.4;
+        line-height: 1.3;
+        margin-bottom: 1rem;
       }
 
       .search-container {
-        margin-top: 1.5rem;
+        margin: 1rem auto 0;
+        width: 90%;
 
         .search-bar {
-          font-size: 1rem;
           width: 100%;
+          font-size: 1rem;
         }
       }
     }
@@ -756,29 +753,32 @@ export default {
 }
 
 
+
 @media (max-width: 768px) {
   .image-container {
-    height: 120px;
-    margin: 40px 0;
-    overflow: hidden;
     position: relative;
+    width: 100%;
+    height: 80px;
+    margin: 20px 0;
+    overflow: hidden;
   }
 
   .background-image {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     object-fit: contain;
-    opacity: 0.8;
-    animation: moveHorizontal 10s infinite linear;
     position: absolute;
-    top: 25px;
+    opacity: 0.9;
+    animation: moveHorizontal 10s infinite linear;
+    top: 15px;
   }
 
   .background-image:nth-child(1) { left: -100px; animation-delay: 0s; }
-  .background-image:nth-child(2) { left: -100px; animation-delay: 1s; }
-  .background-image:nth-child(3) { left: -100px; animation-delay: 2s; }
-  .background-image:nth-child(4) { left: -100px; animation-delay: 3s; }
-  .background-image:nth-child(5) { left: -100px; animation-delay: 4s; }
+  .background-image:nth-child(2) { left: -250px; animation-delay: 1s; }
+  .background-image:nth-child(3) { left: -400px; animation-delay: 2s; }
+  .background-image:nth-child(4) { left: -550px; animation-delay: 3s; }
+  .background-image:nth-child(5) { left: -700px; animation-delay: 4s; }
 }
+
 
 </style>
