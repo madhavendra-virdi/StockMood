@@ -226,6 +226,7 @@ export default {
   cursor: pointer;
   transition: background 0.3s ease-out;
 }
+
 /* change for mobile interface*/ 
 .responsive-plot-container {
   display: flex;
@@ -234,15 +235,18 @@ export default {
   flex-wrap: wrap; /* Allow wrapping on small screens */
 }
 
-.responsive-plot-container > div {
+.plot-column {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
+  .responsive-plot-container {
+    justify-content: space-between;
+  }
   .plot-column {
-    width: 50%;
+    width: 48%;
   }
   .left-plot {
     padding-right: 10px;
@@ -256,6 +260,7 @@ export default {
   position: relative;
   width: 100%;
   padding-top: 100%; /* Maintain aspect ratio (1:1), change if needed */
+  margin-top: 10px; /* Add spacing between heading and plot */
 }
 
 .plot-container iframe {
@@ -267,5 +272,21 @@ export default {
   border: 0;
 }
 
+/* NEW: Fix for h3 overflow on mobile */
+.plot-column h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  text-align: center;
+  word-break: break-word;
+}
 
+@media (max-width: 767px) {
+  .plot-column h3 {
+    font-size: 16px;
+    padding: 0 10px;
+    margin-bottom: 16px;
+  }
+}
 </style>
+
+
