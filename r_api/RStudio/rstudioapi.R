@@ -65,7 +65,7 @@ function(stock_name = "") {
         text = paste("Price vs Predicted Share Price for", stock_name),
         x = 0.5,
         xanchor = "center",
-        font=list(size=16)
+        font=list(size=12)
       ),
       yaxis = list(title = "Price"),
       xaxis = list(title = ""),
@@ -137,7 +137,7 @@ function(stock_name = "") {
         text = paste("Market Share in", sub_industry_val, "Sub-Industry"),
         x = 0.5,
         xanchor = "center",
-        font = list(size = 16)
+        font = list(size = 12)
       ),
       showlegend = FALSE,
       margin = list(t = 100)
@@ -217,7 +217,7 @@ function(stock_name = "") {
         text = paste0("Debt-to-Equity Ratio in ", sub_industry_val, " Sub-Industry"),
         x = 0.5,
         xanchor = "center",
-        font=list(size=16)
+        font=list(size=12)
       ),
       xaxis = list(title = "", showticklabels = FALSE),
       yaxis = list(title = "Debt-to-Equity"),

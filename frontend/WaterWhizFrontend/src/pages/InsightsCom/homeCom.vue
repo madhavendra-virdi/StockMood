@@ -278,16 +278,19 @@ export default {
 
   .plot-container {
     width: 100%;
-    padding: 0 10px;
+    padding-top: 100%;
     max-width: 1480px;
     margin: 30px auto 20px auto; /* Top spacing added here */
+    position:relative;
   }
 
   .plot-container iframe {
-    width: 100%;
-    height: 500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
     border: none;
-    margin-top: 20px;
   }
 }
 
