@@ -243,24 +243,23 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: #f9fbfd;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 700px;
-  padding: 10px 0 30px; /* Reduced top padding */
-  margin: 0 auto;
+  max-width: 600px;
+  padding: 20px; /* Reduced top padding */
+  margin: 0 auto 40px;
 }
 
 .sentiment-meter svg {
-  width: 600px;
+  width: 100%;
+  max-width: 400px;
   height: auto;
-  transform: translateX(-85px);
-  
-  /* Removes potential visual noise */
+  transform: none;
   filter: none;
   box-shadow: none;
-  outline: none;
   background: transparent;
+  display: block;
 }
 
 
@@ -286,6 +285,9 @@ export default {
   .sankey-width,
   .wordcloud-width {
     width: 100%;
+  }
+  .plot iframe{
+    height: 600px !important;
   }
 }
 
