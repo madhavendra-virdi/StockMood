@@ -61,7 +61,12 @@
         </el-table-column>
       </el-table>
     </div>
-    <h2>Selected columns : {{ selectedColumns }}</h2>
+    <div class="selected-columns-wrapper">
+      <h2>Selected Columns:</h2>
+      <div class="selected-columns">
+        <span v-for="col in selectedColumns" :key="col" class="column-pill">{{ col }}</span>
+      </div>
+    </div>
 
     <div class="calculator_btn">
       <el-button @click="toSubmit" type="primary">Predict</el-button>
@@ -309,6 +314,32 @@ export default {
   font-size: 16px;
   font-weight: bold;
   padding: 6px 10px;
+}
+
+.selected-columns-wrapper {
+  margin: 20px 0;
+}
+
+.selected-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.column-pill {
+  background-color: #f0f4ff;
+  color: #2c3e50;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  border: 1px solid #c0d3f9;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: background-color 0.3s ease;
+}
+
+.column-pill:hover {
+  background-color: #d8e6ff;
 }
 
 

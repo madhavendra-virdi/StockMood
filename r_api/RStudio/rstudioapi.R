@@ -61,12 +61,7 @@ function(stock_name = "") {
   p <- plot_ly(compare_df, x = ~Type, y = ~Value, type = 'bar', color = ~Type,
                colors = c('#a9c0e8', '#f4f4f4')) %>%
     layout(
-      title = list(
-        text = paste("Price vs Predicted Share Price for", stock_name),
-        x = 0.5,
-        xanchor = "center",
-        font=list(size=14)
-      ),
+      
       yaxis = list(title = "Price"),
       xaxis = list(title = ""),
       margin = list(t = 100)  # <-- This adds top spacing

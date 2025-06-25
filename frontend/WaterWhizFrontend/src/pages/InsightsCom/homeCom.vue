@@ -94,8 +94,12 @@
     <!-- Visualization Container -->
      <!-- Visualization Container -->
 <div v-if="iframeSrc" class="plot-container">
+  <div class="scrollable-title-container">
+    <div class="scrollable-title">{{ plotTitle }}</div>
+  </div>
   <iframe :src="iframeSrc" width="100%" height="600" frameborder="0"></iframe>
 </div>
+
 <div v-else>
   <p>No visualization available for the selected stock.</p>
 </div>
@@ -115,13 +119,15 @@ export default {
   name: "StockDetailsComponent",
   data() {
   let selectedStock = JSON.parse(sessionStorage.getItem('selectedStock')) || null;
+  plotTitle:'';
   
   return {
     selectedStock,
     parsedData: selectedStock ? this.parseStockData(selectedStock) : {},
     years: ["BASE YEAR", ...Array.from({ length: 10 }, (_, i) => `${2025 + i}E`)],
     plotUrl: '',
-    iframeSrc: selectedStock ? `/rapi/plot1?stock_name=${encodeURIComponent(selectedStock.Name)}` : ''
+    iframeSrc: selectedStock ? `/rapi/plot1?stock_name=${encodeURIComponent(selectedStock.Name)}` : '',
+    plotTitle: selectedStock ? `Price vs Predicted Share Price for ${selectedStock.Name}` : ''
   };
 }
 ,
@@ -265,6 +271,23 @@ export default {
 .blue-row {
   background: #e8f0fe !important;
 }
+
+.scrollable-title-container {
+  width: 100%;
+  overflow-x: auto;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.scrollable-title {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 6px 10px;
+}
+
+
 @media (max-width: 1024px) {
   #lower-section {
     flex-direction: column;
