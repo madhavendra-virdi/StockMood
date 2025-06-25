@@ -2,8 +2,10 @@
   <div class="home_box">
     <div class="banner">
       <div class="video-bg">
-        
-
+        <video autoplay muted loop playsinline class="video-content">
+          <source src="@/assets/tryout.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
 
       <div class="text_box">
@@ -779,6 +781,13 @@ export default {
   .background-image:nth-child(4) { left: -150px; animation-delay: 3s; }
   .background-image:nth-child(5) { left: -150px; animation-delay: 4s; }
 }
+
+.video-content {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 
 
 </style>

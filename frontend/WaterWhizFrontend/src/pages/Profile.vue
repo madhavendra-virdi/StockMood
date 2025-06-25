@@ -9,7 +9,8 @@
         <h4>Your Favorite Stocks</h4>
         <ul>
           <li v-for="stock in favoriteStocks" :key="stock">
-            <router-link :to="`/insights?stock=${stock}`">
+            <router-link :to="{ path: '/insights', query: { stock: stock.Name } }"
+                        @click.native="selectStock(stock)">
               <i class="fas fa-star star-icon"></i> {{ stock }}
             </router-link>
           </li>
@@ -60,7 +61,13 @@ export default {
 
     axios.get(`/api/user-favorites/${username}`)
       .then(res => {
-        this.favoriteStocks = res.data;
+        const allStocks = JSON.parse(sessionStorage.getItem("allStocks")) || [];
+        const favoriteNames = res.data;
+
+        // Map favorites to full stock objects
+        this.favoriteStocks = allStocks.filter(stock =>
+          favoriteNames.includes(stock.Name)
+        );
       })
       .catch(() => {
         this.favoriteStocks = [];
@@ -72,12 +79,16 @@ export default {
       this.$router.push('/login');
       location.reload();
     },
+    selectStock(stock) {
+      sessionStorage.setItem("selectedStock", JSON.stringify(stock));
+    },
     goToPricing() {
       this.$router.push('/pricing').then(() => {
         this.$root.$emit('forceActiveUpdate');
       });
 
     }
+    
   }
 };
 </script>
