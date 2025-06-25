@@ -119,7 +119,7 @@ export default {
   name: "StockDetailsComponent",
   data() {
   let selectedStock = JSON.parse(sessionStorage.getItem('selectedStock')) || null;
-  plotTitle:'';
+  
   
   return {
     selectedStock,

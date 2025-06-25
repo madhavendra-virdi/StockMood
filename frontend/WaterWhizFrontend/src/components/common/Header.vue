@@ -1,45 +1,56 @@
 <template>
   <div class="main-header">
     <div class="header">
-      <!-- Hamburger for Mobile -->
-      <i class="fas fa-bars hamburger" @click="drawerVisible = true"></i>
-
-      <!-- Centered Logo -->
-      <div @click="handleSelect('home')" class="logo-wrapper">
+      <div @click="handleSelect('home')">
         <img class="logoClass" src="../../../static/logostockmood.png" />
       </div>
-
-      <!-- Desktop Menu -->
+      <div class="hamburger-menu-mobile" @click="sidebarVisible = true">
+        <i class="el-icon-menu"></i>
+      </div>
       <div class="right-menu">
         <el-menu
-          :default-active="activeIndex"
+          :active="activeIndex"
           class="el-menu-demo"
           mode="horizontal"
           @select="handleSelect"
         >
+
           <el-menu-item index="home">Home</el-menu-item>
           <el-menu-item index="insights">Dashboard</el-menu-item>
           <el-menu-item index="pricing">Pricing</el-menu-item>
+
           <el-menu-item v-if="!loggedInUser" index="login">Login</el-menu-item>
-          <el-menu-item v-if="loggedInUser" index="profile">@{{ loggedInUser }}</el-menu-item>
+          <el-menu-item v-if="loggedInUser" :index="'profile'">
+            @{{ loggedInUser }}
+          </el-menu-item>
+
+
+
+
+
+          <!-- <el-menu-item index="4">Visulisation</el-menu-item>
+          <el-menu-item index="5">All Model</el-menu-item>
+          <el-menu-item index="6">About us</el-menu-item> -->
         </el-menu>
       </div>
     </div>
-
-    <!-- Mobile Sidebar Drawer -->
     <el-drawer
-      :visible.sync="drawerVisible"
+      title="Menu"
+      :visible.sync="sidebarVisible"
       direction="ltr"
-      size="60%"
-      :with-header="false"
+      class="mobile-drawer"
     >
-      <ul class="mobile-menu">
-        <li @click="navigateAndClose('home')">Home</li>
-        <li @click="navigateAndClose('insights')">Dashboard</li>
-        <li @click="navigateAndClose('pricing')">Pricing</li>
-        <li v-if="!loggedInUser" @click="navigateAndClose('login')">Login</li>
-        <li v-if="loggedInUser" @click="navigateAndClose('profile')">@{{ loggedInUser }}</li>
-      </ul>
+      <el-menu
+        :default-active="activeIndex"
+        class="el-menu-vertical"
+        @select="handleSidebarSelect"
+      >
+        <el-menu-item index="home">Home</el-menu-item>
+        <el-menu-item index="insights">Dashboard</el-menu-item>
+        <el-menu-item index="pricing">Pricing</el-menu-item>
+        <el-menu-item v-if="!loggedInUser" index="login">Login</el-menu-item>
+        <el-menu-item v-if="loggedInUser" :index="'profile'">@{{ loggedInUser }}</el-menu-item>
+      </el-menu>
     </el-drawer>
   </div>
 </template>
@@ -47,22 +58,34 @@
 <script>
 export default {
   name: "Header",
+
   data() {
     return {
-      activeIndex: "1",
-      loggedInUser: null,
-      drawerVisible: false
-    };
+    activeIndex: "1",
+    loggedInUser: null, // set it in mounted instead
+    sidebarVisible: false,
+  };
   },
   mounted() {
     const storedUser = localStorage.getItem("loggedInUser");
-    if (!storedUser || storedUser === "null" || storedUser === "undefined") {
-      this.loggedInUser = null;
-      localStorage.removeItem("loggedInUser");
-    } else {
-      this.loggedInUser = storedUser;
-    }
+  if (!storedUser || storedUser === "null" || storedUser === "undefined") {
+    this.loggedInUser = null;
+    localStorage.removeItem("loggedInUser");
+  } else {
+    this.loggedInUser = storedUser;
+  }
 
+  this.handleOpen(this.$route);
+    console.log(this.$route.path);
+    // if (this.$route.path === "/home") {
+    //   this.activeIndex = "home";
+    // } else if (this.$route.path === "/calculator") {
+    //   this.activeIndex = "calculator";
+    // } else if (this.$route.path === "/insights") {
+    //   this.activeIndex = "insights";
+    // } else if (this.$route.path === "/catchments") {
+    //   this.activeIndex = "catchments";
+    // }
     this.handleOpen(this.$route);
     this.$root.$on('forceActiveUpdate', () => {
       this.handleOpen(this.$route);
@@ -73,54 +96,64 @@ export default {
       this.handleOpen({ path: newPath });
     }
   },
+
   methods: {
-    handleOpen(to) {
-      const pathMap = {
-        '/home': 'home',
-        '/insights': 'insights',
-        '/pricing': 'pricing',
-        '/login': 'login',
-        '/profile': 'profile'
-      };
-      this.activeIndex = pathMap[to.path] || 'home';
+    handleOpen(to, keyPath) {
+      if (to.path === "/home") {
+        this.activeIndex = "home";
+      } else if (to.path === "/insights") {
+        this.activeIndex = "insights";
+
+      } else if (to.path === "/pricing") {
+        this.activeIndex = "pricing";
+      }else if (to.path === "/login") {
+        this.activeIndex = "login";
+      }else if (to.path === "/profile") {
+        this.activeIndex = "profile";
+      }
     },
-    handleSelect(key) {
-      this.$router.push(`/${key}`);
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
+      if (key === "home") {
+        this.$router.push("/home");
+      } else if (key === "insights") {
+        this.$router.push("/insights");
+      }else if (key === "login") {
+        this.$router.push("/login");
+      }else if (key === "pricing") {
+        this.$router.push("/pricing");
+      } else if (key === "profile") {
+        this.$router.push("/profile");
+      }
     },
-    navigateAndClose(key) {
-      this.handleSelect(key);
-      this.drawerVisible = false;
-    }
+    handleSidebarSelect(key) {
+    this.handleSelect(key);
+    this.sidebarVisible = false;
   }
+  }
+
 };
 </script>
 
 <style scoped lang="less">
 @import "../../assets/style/variable";
-
 .main-header {
+  overflow: hidden;
   height: 80px;
   background: #fff;
 
   .header {
     height: 100%;
-    width: 95%;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: 95%; /* Ensures the header spans the full width */
+    padding: 0 20px; /* Adds some spacing to the edges */
     display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
-
-    .logo-wrapper {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+    justify-content: space-between; /* Pushes items to the edges */
 
     .logoClass {
-      width: 200px;
-      height: auto;
+      margin-top: 0%;
+      width: 350px; /* Adjusted width for better fit */
+      height: auto; /* Ensures aspect ratio is maintained */
       cursor: pointer;
     }
 
@@ -131,6 +164,8 @@ export default {
       .el-menu-item {
         font-size: 20px;
         margin: 0 10px;
+        display: flex;
+        align-items: center;
       }
 
       .el-menu--horizontal > .el-menu-item.is-active {
@@ -151,22 +186,6 @@ export default {
         border-radius: 47px;
         color: #fff;
       }
-
-      @media (max-width: 768px) {
-        display: none;
-      }
-    }
-
-    .hamburger {
-      position: absolute;
-      left: 20px;
-      font-size: 26px;
-      cursor: pointer;
-      display: none;
-
-      @media (max-width: 768px) {
-        display: block;
-      }
     }
   }
 
@@ -175,14 +194,23 @@ export default {
   }
 }
 
-.mobile-menu {
-  list-style: none;
-  padding: 20px;
-  font-size: 18px;
+/* Only for mobile sidebar and menu button */
+.hamburger-menu-mobile {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
 
-  li {
-    margin-bottom: 15px;
-    cursor: pointer;
+/* Show hamburger only on mobile */
+@media (max-width: 768px) {
+  .hamburger-menu-mobile {
+    display: block;
+  }
+
+  .right-menu {
+    display: none !important;
   }
 }
+
+
 </style>
