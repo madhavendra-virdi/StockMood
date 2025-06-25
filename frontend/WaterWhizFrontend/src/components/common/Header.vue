@@ -1,11 +1,14 @@
 <template>
   <div class="main-header">
     <div class="header">
-      <div @click="handleSelect('home')">
-        <img class="logoClass" src="../../../static/logostockmood.png" />
-      </div>
-      <div class="hamburger-menu-mobile" @click="sidebarVisible = true">
-        <i class="el-icon-menu"></i>
+      <!-- Hamburger icon comes first on mobile -->
+      <div class="mobile-header-left">
+        <div class="hamburger-menu-mobile" @click="sidebarVisible = true">
+          <i class="el-icon-menu"></i>
+        </div>
+        <div @click="handleSelect('home')">
+          <img class="logoClass" src="../../../static/logostockmood.png" />
+        </div>
       </div>
       <div class="right-menu">
         <el-menu
@@ -194,14 +197,27 @@ export default {
   }
 }
 
-/* Only for mobile sidebar and menu button */
+.mobile-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Mobile-specific styles */
 .hamburger-menu-mobile {
   display: none;
   font-size: 28px;
   cursor: pointer;
+  z-index: 3001;
+  background: #fff;
+  padding: 5px;
+  border-radius: 6px;
 }
 
-/* Show hamburger only on mobile */
+.mobile-drawer {
+  z-index: 3000 !important;
+}
+
 @media (max-width: 768px) {
   .hamburger-menu-mobile {
     display: block;
@@ -211,6 +227,7 @@ export default {
     display: none !important;
   }
 }
+
 
 
 </style>
