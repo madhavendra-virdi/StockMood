@@ -238,17 +238,24 @@ export default {
   border-radius: 10px;
 }
 
+.sentiment-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  gap: 16px;
+}
+
 .sentiment-meter {
+  width: 100%;
+  max-width: 600px;
+  background-color: #f9fbfd;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  padding: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f9fbfd;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  width: 100%;
-  max-width: 600px;
-  padding: 20px; /* Reduced top padding */
-  margin: 0 auto 40px;
 }
 
 .sentiment-meter svg {
@@ -256,11 +263,8 @@ export default {
   max-width: 400px;
   height: auto;
   transform: none;
-  filter: none;
-  box-shadow: none;
-  background: transparent;
-  display: block;
 }
+
 
 
 
@@ -287,7 +291,7 @@ export default {
     width: 100%;
   }
   .plot iframe{
-    height: 600px !important;
+    height: 500px !important;
   }
 }
 
@@ -361,46 +365,66 @@ export default {
     </div>
 
     <!-- Sentiment Meter -->
-    <div class="sentiment-meter">
-      <svg ref="svg" width="450" height="300" viewBox="0 0 200 200">
-        <defs>
-          <linearGradient id="sentimentGradient" x1="60" y1="150" x2="240" y2="150" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#ff0000" />
-            <stop offset="50%" stop-color="#ffff00" />
-            <stop offset="100%" stop-color="#00cc00" />
-          </linearGradient>
-        </defs>
+    <!-- Sentiment Summary -->
+    <div class="sentiment-block">
+      <h3 class="mentions-title">Mention sentiments</h3>
+      <div class="mention-columns">
+        <div class="mention-source negative">
+          <div class="source-name">Negative</div>
+          <div class="mention-count">{{ negativeCount }}</div>
+        </div>
+        <div class="mention-source neutral">
+          <div class="source-name">Neutral</div>
+          <div class="mention-count">{{ neutralCount }}</div>
+        </div>
+        <div class="mention-source positive">
+          <div class="source-name">Positive</div>
+          <div class="mention-count">{{ positiveCount }}</div>
+        </div>
+      </div>
 
-        <path
-          d="M60 100 A90 90 0 0 1 240 100"
-          stroke="url(#sentimentGradient)"
-          stroke-width="16"
-          fill="none"
-        />
+      <div class="sentiment-meter">
+        <svg ref="svg" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="sentimentGradient" x1="60" y1="150" x2="240" y2="150" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ff0000" />
+              <stop offset="50%" stop-color="#ffff00" />
+              <stop offset="100%" stop-color="#00cc00" />
+            </linearGradient>
+          </defs>
 
-        <polygon
-          :points="needlePoints"
-          fill="black"
-          ref="needle"
-          @mouseenter="showTooltip"
-          @mouseleave="hideTooltip"
-        />
+          <path
+            d="M60 100 A90 90 0 0 1 240 100"
+            stroke="url(#sentimentGradient)"
+            stroke-width="16"
+            fill="none"
+          />
 
-        <circle cx="150" cy="100" r="6" fill="black" />
-      </svg>
+          <polygon
+            :points="needlePoints"
+            fill="black"
+            ref="needle"
+            @mouseenter="showTooltip"
+            @mouseleave="hideTooltip"
+          />
 
-      <div
-        v-if="tooltipVisible"
-        class="tooltip"
-        :style="{
-          top: tooltipPos.y + 'px',
-          left: tooltipPos.x + 'px',
-          backgroundColor: interpolatedColor
-        }"
-      >
-        Sentiment Score: {{ sentimentScore.toFixed(2) }}
+          <circle cx="150" cy="100" r="6" fill="black" />
+        </svg>
+
+        <div
+          v-if="tooltipVisible"
+          class="tooltip"
+          :style="{
+            top: tooltipPos.y + 'px',
+            left: tooltipPos.x + 'px',
+            backgroundColor: interpolatedColor
+          }"
+        >
+          Sentiment Score: {{ sentimentScore.toFixed(2) }}
+        </div>
       </div>
     </div>
+
   </div>
 </template>
 
