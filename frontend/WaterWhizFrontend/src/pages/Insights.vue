@@ -175,7 +175,7 @@ export default {
     },
     
     loadStockFromBackend(symbol) {
-      axios.get(`/api/stock/${symbol}`)
+      return axios.get(`/api/stock/${symbol}`)
         .then(res => {
           this.selectedStock = res.data;
           sessionStorage.setItem('selectedStock', JSON.stringify(res.data));
