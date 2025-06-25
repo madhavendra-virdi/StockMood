@@ -4,7 +4,12 @@
     <div class="responsive-plot-container">
   <!-- Left: Market Share Donut Chart -->
   <div class="plot-column left-plot">
-    <h3>Market Share Donut Chart</h3>
+    <div class="scrollable-title-container">
+      <div class="scrollable-title">
+        Market Share in {{ subIndustryName }} Sub-Industry
+      </div>
+    </div>
+
     <div v-if="iframeSrc" class="plot-container">
   <iframe :src="iframeSrc"></iframe>
 </div>
@@ -15,7 +20,12 @@
 
   <!-- Right: DE Plot -->
   <div class="plot-column right-plot">
-    <h3>Debt-to-Equity (DE) Chart</h3>
+    <div class="scrollable-title-container">
+      <div class="scrollable-title">
+        Debt-to-Equity Ratio in {{ subIndustryName }} Sub-Industry
+      </div>
+    </div>
+
     <div v-if="iframeSrc2" class="plot-container">
   <iframe :src="iframeSrc2" width="100%" height="600" frameborder="0"></iframe>
 </div>
@@ -77,7 +87,9 @@ export default {
       predictedPrice: null,  // Store the predicted price
       selectedStock: null,
       plotUrl: null,
-      iframeSrc: null
+      iframeSrc: null,
+      iframeSRC2: null,
+      subIndustryName: ''//new added for plot title
     };
   },
   mounted() {
@@ -86,16 +98,18 @@ export default {
     let selectedStock = sessionStorage.getItem('selectedStock');
 
     if (selectedStock) {
-  const parsedStock = JSON.parse(selectedStock);
-  this.selectedStock = parsedStock.Name;
-  let rawStockName = parsedStock.Name.trim();
-  const encodedStockName = encodeURIComponent(rawStockName);
+      const parsedStock = JSON.parse(selectedStock);
+      this.selectedStock = parsedStock.Name;
+      this.subIndustryName = parsedStock.Sub_Industry || '';//for the sub industry inside R plots
+
+      let rawStockName = parsedStock.Name.trim();
+      const encodedStockName = encodeURIComponent(rawStockName);
 
 
-  this.iframeSrc = rawStockName ? `/rapi/plot2?stock_name=${encodeURIComponent(rawStockName)}` : ''
-  this.iframeSrc2 = rawStockName ? `/rapi/plot3?stock_name=${encodeURIComponent(rawStockName)}` : ''
-  console.log("plotUrl:", this.iframeSrc);
-  console.log("plotde:", this.iframeSrc2);
+      this.iframeSrc = rawStockName ? `/rapi/plot2?stock_name=${encodeURIComponent(rawStockName)}` : ''
+      this.iframeSrc2 = rawStockName ? `/rapi/plot3?stock_name=${encodeURIComponent(rawStockName)}` : ''
+      console.log("plotUrl:", this.iframeSrc);
+      console.log("plotde:", this.iframeSrc2);
 
 
 }
@@ -279,6 +293,24 @@ export default {
   text-align: center;
   word-break: break-word;
 }
+
+/** for scrollable title of R plots */
+
+.scrollable-title-container {
+  width: 100%;
+  overflow-x: auto;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.scrollable-title {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 6px 10px;
+}
+
 
 @media (max-width: 767px) {
   .plot-column h3 {

@@ -252,7 +252,7 @@ export default {
   background-color: #f9fbfd;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-  padding: 30px;
+  padding: 20px 10px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -342,25 +342,6 @@ export default {
           style="border:none; background: transparent;"
           class="oval-shaped-iframe"
         ></iframe>
-      </div>
-    </div>
-
-    <!-- Sentiment Summary -->
-    <div class="mentions-summary" style="margin-bottom: 0px; padding-bottom: 0px;">
-      <h3 class="mentions-title">Mention sentiments</h3>
-      <div class="mention-columns">
-        <div class="mention-source negative">
-          <div class="source-name">Negative</div>
-          <div class="mention-count">{{ negativeCount }}</div>
-        </div>
-        <div class="mention-source neutral">
-          <div class="source-name">Neutral</div>
-          <div class="mention-count">{{ neutralCount }}</div>
-        </div>
-        <div class="mention-source positive">
-          <div class="source-name">Positive</div>
-          <div class="mention-count">{{ positiveCount }}</div>
-        </div>
       </div>
     </div>
 

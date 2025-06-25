@@ -133,12 +133,7 @@ function(stock_name = "") {
     hole = 0.5
   ) %>%
     layout(
-      title = list(
-        text = paste("Market Share in", sub_industry_val, "Sub-Industry"),
-        x = 0.5,
-        xanchor = "center",
-        font = list(size = 14)
-      ),
+      
       showlegend = FALSE,
       margin = list(t = 100)
     )
@@ -213,12 +208,7 @@ function(stock_name = "") {
                text = ~paste0(Name, "<br>DE: ", round(DE, 2))
   ) %>%
     layout(
-      title = list(
-        text = paste0("Debt-to-Equity Ratio in ", sub_industry_val, " Sub-Industry"),
-        x = 0.5,
-        xanchor = "center",
-        font=list(size=14)
-      ),
+      
       xaxis = list(title = "", showticklabels = FALSE),
       yaxis = list(title = "Debt-to-Equity"),
       margin = list(t = 100),
