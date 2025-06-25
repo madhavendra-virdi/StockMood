@@ -6,7 +6,7 @@
         <div class="hamburger-menu-mobile" @click="sidebarVisible = true">
           <i class="el-icon-menu"></i>
         </div>
-        <div @click="handleSelect('home')">
+        <div class="mobile-logo-wrapper" @click="handleSelect('home')">
           <img class="logoClass" src="../../../static/logostockmood.png" />
         </div>
       </div>
@@ -42,6 +42,10 @@
       :visible.sync="sidebarVisible"
       direction="ltr"
       class="mobile-drawer"
+      :append-to-body="true"
+      :close-on-click-modal="true"
+      :close-on-press-escape="true"
+      @close="sidebarVisible = false"
     >
       <el-menu
         :default-active="activeIndex"
@@ -226,8 +230,38 @@ export default {
   .right-menu {
     display: none !important;
   }
+
+  .mobile-header-left {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-logo-wrapper {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .logoClass {
+    width: 200px !important; /* Slightly smaller for mobile */
+  }
 }
 
+</style>
+<style>
+/* Fix ElementUI drawer overlay z-index and responsiveness */
+.el-overlay {
+  z-index: 2999 !important;
+  pointer-events: auto !important;
+}
 
+.el-drawer {
+  z-index: 3000 !important;
+}
 
+.el-overlay__mask {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}
 </style>
