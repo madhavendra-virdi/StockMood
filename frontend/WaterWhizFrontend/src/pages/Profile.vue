@@ -8,12 +8,11 @@
       <div v-if="favoriteStocks.length > 0" class="favorites">
         <h4>Your Favorite Stocks</h4>
         <ul>
-          <li v-for="stock in favoriteStocks" :key="stock">
-            <li v-for="stock in favoriteStocks" :key="stock" @click="handleFavoriteClick(stock)">
-              <i class="fas fa-star star-icon"></i> {{ stock }}
-            </li>
+          <li v-for="stock in favoriteStocks" :key="stock" @click="handleFavoriteClick(stock)" style="cursor: pointer;">
+            <i class="fas fa-star star-icon"></i> {{ stock }}
           </li>
         </ul>
+
       </div>
       <p v-else>No favorite stocks yet.</p>
 

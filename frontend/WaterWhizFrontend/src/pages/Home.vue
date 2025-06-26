@@ -814,7 +814,7 @@ export default {
   object-fit: cover;
 }
 
-.floating-cta {
+::v-deep .floating-cta {
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -834,7 +834,7 @@ export default {
   background-color: #88aee0;
 }
 
-.info-popup {
+::v-deep .info-popup {
   position: fixed;
   top: 150px; /* adjusts vertical position near search */
   left: 50%;
