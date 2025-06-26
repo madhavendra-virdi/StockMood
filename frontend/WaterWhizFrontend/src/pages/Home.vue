@@ -83,6 +83,18 @@
         </div>
       </div>
     </section>
+    <!-- Floating CTA Button -->
+    <button class="floating-cta" @click="focusSearchBar">
+      Try it for free?
+    </button>
+
+    <!-- Info Popup -->
+    <div
+      v-if="showInfoPopup"
+      class="info-popup"
+    >
+      First select a stock to start
+    </div>
   </div>
 </template>
 
@@ -97,6 +109,7 @@ export default {
       selectedStock: [],
       filteredStocks: [],
       showDropdown: false,
+      showInfoPopup: false,
       websiteContentData: [
         {
           image: require("@/assets/images/home/Swim2x.png"),
@@ -230,7 +243,20 @@ export default {
 
     toPage(path) {
       this.$router.push(path);
+    },
+    focusSearchBar() {
+      const el = document.querySelector('.search-bar');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.focus();
+      }
+
+      this.showInfoPopup = true;
+      setTimeout(() => {
+        this.showInfoPopup = false;
+      }, 3000);
     }
+
   }
 };
 </script>
@@ -788,6 +814,47 @@ export default {
   object-fit: cover;
 }
 
+.floating-cta {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #a9c0e8;
+  color: white;
+  font-size: 16px;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  z-index: 1001;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+
+.floating-cta:hover {
+  background-color: #88aee0;
+}
+
+.info-popup {
+  position: fixed;
+  top: 150px; /* adjusts vertical position near search */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111827;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  z-index: 1001;
+  font-size: 14px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0%   { opacity: 0; transform: translateY(-10px) translateX(-50%); }
+  10%  { opacity: 1; transform: translateY(0) translateX(-50%); }
+  90%  { opacity: 1; transform: translateY(0) translateX(-50%); }
+  100% { opacity: 0; transform: translateY(-10px) translateX(-50%); }
+}
 
 
 </style>
