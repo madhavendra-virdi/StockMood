@@ -84,16 +84,17 @@
       </div>
     </section>
     <!-- Floating CTA Button -->
-    <button style="position:fixed; bottom:10px; right:10px; z-index:9999; background:red; color:white;"class="floating-cta" @click="focusSearchBar">
-      Try it for free?
-    </button>
+    <div style="position: relative; z-index: 10;">
+      <button class="floating-cta" @click="focusSearchBar">
+        Try it for free?
+      </button>
 
-    <!-- Info Popup -->
-    <div
-      v-if="showInfoPopup"
-      class="info-popup"
-    >
-      First select a stock to start
+      <div
+        v-if="showInfoPopup"
+        class="info-popup"
+      >
+        First select a stock to start
+      </div>
     </div>
   </div>
 </template>
@@ -814,7 +815,7 @@ export default {
   object-fit: cover;
 }
 
-::v-deep .floating-cta {
+.floating-cta {
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -834,7 +835,7 @@ export default {
   background-color: #88aee0;
 }
 
-::v-deep .info-popup {
+.info-popup {
   position: fixed;
   top: 150px; /* adjusts vertical position near search */
   left: 50%;
@@ -848,6 +849,15 @@ export default {
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   animation: fadeInOut 3s ease-in-out;
 }
+
+.video-content {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  position: absolute;
+}
+
 
 @keyframes fadeInOut {
   0%   { opacity: 0; transform: translateY(-10px) translateX(-50%); }
