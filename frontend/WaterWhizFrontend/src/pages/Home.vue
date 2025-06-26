@@ -316,78 +316,11 @@ export default {
 
 .home_box {
   padding: 0 21px;
+  z-index: 1;
+  position: relative;
 
   //   width: 1180px;
-  margin: 0 auto;
-
-  // .text_remark {
-  //   margin-top: 50px;
-  //   font-size: 26px;
-  //   text-align: center;
-  //   font-weight: bold;
-  //   width: 1180px;
-  //   margin: 50px auto;
-  // }
-
-  // .calculate_button {
-  //   margin-top: 50px;
-  //   width: fit-content;
-  //   margin: 50px auto;
-  //   text-align: center;
-
-  //   .button_class {
-  //     display: inline-block;
-  //     text-align: center;
-  //     padding: 20px;
-  //     font-weight: bold;
-  //     font-size: 34px;
-  //     color: #ffffff;
-
-  //     background: #a9c0e8;
-  //     border-radius: 24px 24px 24px 24px;
-  //   }
-
-  //   .button_class:hover {
-  //     cursor: pointer;
-  //     box-shadow: 0px 0px 10px 0px #a9c0e8;
-  //   }
-  // }
-
-  // .image_box {
-  //   justify-content: center;
-  //   margin-top: 50px;
-  //   width: 1180px;
-  //   margin: 50px auto;
-
-  //   text-align: center;
-
-  //   .calculate_button {
-  //     margin-top: 10px;
-  //     text-align: center;
-
-  //     .button_class2 {
-  //       font-size: 26px;
-
-  //       background: linear-gradient(90deg, #133700 0%, #0e0e0e 100%);
-  //       color: white;
-  //       border-radius: 10px;
-  //       display: inline-block;
-  //       text-align: center;
-  //       padding: 10px;
-  //       width: 262px;
-  //       font-weight: bold;
-  //       font-size: 34px;
-
-  //       background: #a9c0e8;
-  //       border-radius: 24px 24px 24px 24px;
-  //     }
-
-  //     .button_class2:hover {
-  //       cursor: pointer;
-  //       box-shadow: 0px 0px 10px 0px #a9c0e8;
-  //     }
-  //   }
-  // }
+  margin: 0 auto; 
 
   
   
@@ -828,7 +761,7 @@ export default {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 9999;
+  z-index: 99999;
   pointer-events: none; // makes sure container doesn’t interfere
 }
 

@@ -8,9 +8,10 @@
       <div v-if="favoriteStocks.length > 0" class="favorites">
         <h4>Your Favorite Stocks</h4>
         <ul>
-          <li v-for="stock in favoriteStocks" :key="stock" style="cursor: pointer;">
-            <i class="fas fa-star star-icon"></i>
-            <span @click="handleFavoriteClick(stock)">{{ stock }}</span>
+          <li v-for="stock in favoriteStocks" :key="stock">
+            <router-link :to="`/insights?stock=${stock}`">
+              <i class="fas fa-star star-icon"></i> {{ stock }}
+            </router-link>
           </li>
         </ul>
 
@@ -78,58 +79,7 @@ export default {
       });
 
     },
-    handleFavoriteClick(stock) {
-      axios.get(`/api/stock/${stock}`)
-        .then(response => {
-          const stockDetails = response.data.stock_details?.[0];
-          if (stockDetails) {
-            sessionStorage.setItem('selectedStock', JSON.stringify(stockDetails));
-
-            // Fetch sentiment
-            axios.get(`/api/sentiment/${encodeURIComponent(stock)}`)
-              .then(sentimentResponse => {
-                sessionStorage.setItem('stockSentiment', JSON.stringify(sentimentResponse.data));
-              });
-
-            // Fetch stocks in same subindustry
-            axios.get(`/api/stocks/subindustry/${encodeURIComponent(stock)}`)
-              .then(subRes => {
-                const names = subRes.data.stocks_in_subindustry || [];
-                const promises = names.map(name =>
-                  axios.get(`/api/stock/${encodeURIComponent(name)}`).then(res => res.data.stock_details?.[0])
-                );
-                Promise.all(promises).then(details => {
-                  const filtered = details.filter(Boolean);
-                  sessionStorage.setItem('stocksInSubIndustry', JSON.stringify(filtered));
-                  this.$router.push({
-                    path: '/insights',
-                    query: {
-                      tab: 'modelling',
-                      stock: encodeURIComponent(stock)
-                    }
-                  });
-                });
-              }).catch(() => {
-                this.$router.push({
-                  path: '/insights',
-                  query: {
-                    tab: 'modelling',
-                    stock: encodeURIComponent(stock)
-                  }
-                });
-              });
-          }
-        })
-        .catch(() => {
-          this.$router.push({
-            path: '/insights',
-            query: {
-              tab: 'modelling',
-              stock: encodeURIComponent(stock)
-            }
-          });
-        });
-    }
+    
 
   }
 };
