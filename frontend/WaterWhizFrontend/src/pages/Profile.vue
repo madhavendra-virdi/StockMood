@@ -145,6 +145,7 @@ export default {
   margin-right: 8px;
 }
 
+
 .plan-card {
   margin-top: 30px;
   padding: 20px;
