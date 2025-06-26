@@ -9,7 +9,8 @@
         <h4>Your Favorite Stocks</h4>
         <ul>
           <li v-for="stock in favoriteStocks" :key="stock">
-            <router-link :to="`/insights?stock=${stock}`">
+            <router-link :to="`/insights?stock=${encodeURIComponent(stock)}`">
+
               <i class="fas fa-star star-icon"></i> {{ stock }}
             </router-link>
           </li>

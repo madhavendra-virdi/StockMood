@@ -102,19 +102,20 @@ export default {
     };
   },
   mounted() {
-    this.setActiveTabFromRoute();
-    this.fetchStockList();
     const querySymbol = this.$route.query.stock;
+    const fallback = sessionStorage.getItem('selectedStock');
 
     if (querySymbol) {
+      // Try fetching from backend using ?stock=
       this.loadStockFromBackend(querySymbol).then(() => {
-        this.setActiveTabFromRoute(); // only after data is loaded
+        this.setActiveTabFromRoute();
       });
-    } else {
-      // fallback if someone opened Insights directly after selecting a stock
-      this.selectedStock = JSON.parse(sessionStorage.getItem('selectedStock')) || null;
+    } else if (fallback) {
+      this.selectedStock = JSON.parse(fallback);
       this.checkIfFavorited();
-      this.setActiveTabFromRoute(); // safe to run here directly
+      this.setActiveTabFromRoute();
+    } else {
+      console.warn("❌ No selected stock found via route or sessionStorage.");
     }
   },
   watch: {
@@ -175,15 +176,29 @@ export default {
     },
     
     loadStockFromBackend(symbol) {
-      return axios.get(`/api/stock/${symbol}`)
+      if (!symbol) {
+        console.warn("No stock symbol provided in route query.");
+        return;
+      }
+
+      const decodedSymbol = decodeURIComponent(symbol);
+      console.log("🔍 Fetching stock:", decodedSymbol);
+
+      return axios.get(`/api/stock/${encodeURIComponent(decodedSymbol)}`)
         .then(res => {
-          this.selectedStock = res.data;
-          sessionStorage.setItem('selectedStock', JSON.stringify(res.data));
-          this.checkIfFavorited();
+          if (res.data && res.data.stock_details && res.data.stock_details.length > 0) {
+            this.selectedStock = res.data.stock_details[0];
+            sessionStorage.setItem('selectedStock', JSON.stringify(this.selectedStock));
+            this.checkIfFavorited();
+          } else {
+            console.warn("⚠️ No stock details found for:", decodedSymbol);
+            this.selectedStock = null;
+          }
         })
         .catch(err => {
-          console.error("❌ Error loading stock by symbol:", err);
-        }); 
+          console.error("❌ Failed to fetch stock from backend:", err);
+          this.selectedStock = null;
+        });
     },
 
 

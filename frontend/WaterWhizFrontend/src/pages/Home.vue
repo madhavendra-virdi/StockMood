@@ -25,6 +25,9 @@
                   @blur="hideDropdownWithDelay"
                   @input="debounceFilter"
                 />
+                <div v-if="showInfoPopup" class="info-popup">
+                  First select a stock to start
+                </div>
                 <ul v-if="showDropdown && filteredStocks.length > 0" class="dropdown-list">
                   <li v-for="stock in filteredStocks" :key="stock" @mousedown="selectStock(stock)">
                     {{ stock }}
@@ -88,10 +91,6 @@
       <button class="floating-cta" @click="focusSearchBar">
         Try it for free?
       </button>
-
-      <div v-if="showInfoPopup" class="info-popup">
-        First select a stock to start
-      </div>
     </div>
   </div>
 </template>
@@ -246,10 +245,15 @@ export default {
       const el = document.querySelector('.search-bar');
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        el.focus();
+
+        // Slight delay to ensure the element is in view before focusing
+        setTimeout(() => {
+          el.focus();
+        }, 500);
       }
 
       this.showInfoPopup = true;
+
       setTimeout(() => {
         this.showInfoPopup = false;
       }, 3000);
@@ -759,7 +763,7 @@ export default {
 
 .floating-elements {
   position: fixed;
-  bottom: 20px;
+  bottom: 80px;
   right: 20px;
   z-index: 99999;
   pointer-events: none; // makes sure container doesn’t interfere
