@@ -84,15 +84,12 @@
       </div>
     </section>
     <!-- Floating CTA Button -->
-    <div style="position: relative; z-index: 10;">
+    <div class="floating-elements">
       <button class="floating-cta" @click="focusSearchBar">
         Try it for free?
       </button>
 
-      <div
-        v-if="showInfoPopup"
-        class="info-popup"
-      >
+      <div v-if="showInfoPopup" class="info-popup">
         First select a stock to start
       </div>
     </div>
@@ -815,40 +812,8 @@ export default {
   object-fit: cover;
 }
 
-.floating-cta {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background-color: #a9c0e8;
-  color: white;
-  font-size: 16px;
-  padding: 14px 24px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  z-index: 1001;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease;
-}
 
-.floating-cta:hover {
-  background-color: #88aee0;
-}
 
-.info-popup {
-  position: fixed;
-  top: 150px; /* adjusts vertical position near search */
-  left: 50%;
-  transform: translateX(-50%);
-  background: #111827;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 8px;
-  z-index: 1001;
-  font-size: 14px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  animation: fadeInOut 3s ease-in-out;
-}
 
 .video-content {
   width: 100%;
@@ -859,12 +824,52 @@ export default {
 }
 
 
-@keyframes fadeInOut {
-  0%   { opacity: 0; transform: translateY(-10px) translateX(-50%); }
-  10%  { opacity: 1; transform: translateY(0) translateX(-50%); }
-  90%  { opacity: 1; transform: translateY(0) translateX(-50%); }
-  100% { opacity: 0; transform: translateY(-10px) translateX(-50%); }
+.floating-elements {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  pointer-events: none; // makes sure container doesn’t interfere
 }
+
+.floating-cta {
+  pointer-events: auto;
+  background-color: #a9c0e8;
+  color: white;
+  font-size: 16px;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+
+.floating-cta:hover {
+  background-color: #88aee0;
+}
+
+.info-popup {
+  margin-top: 10px;
+  background: #111827;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+  animation: fadeInOut 3s ease-in-out;
+  pointer-events: auto;
+}
+
+@keyframes fadeInOut {
+  0%   { opacity: 0; transform: translateY(10px); }
+  10%  { opacity: 1; transform: translateY(0); }
+  90%  { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(10px); }
+}
+
+
 
 
 </style>
