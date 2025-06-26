@@ -100,17 +100,36 @@ export default {
                 Promise.all(promises).then(details => {
                   const filtered = details.filter(Boolean);
                   sessionStorage.setItem('stocksInSubIndustry', JSON.stringify(filtered));
-                  this.$router.push(`/insights?tab=modelling`);
+                  this.$router.push({
+                    path: '/insights',
+                    query: {
+                      tab: 'modelling',
+                      stock: encodeURIComponent(stock)
+                    }
+                  });
                 });
               }).catch(() => {
-                this.$router.push(`/insights?tab=modelling`);
+                this.$router.push({
+                  path: '/insights',
+                  query: {
+                    tab: 'modelling',
+                    stock: encodeURIComponent(stock)
+                  }
+                });
               });
           }
         })
         .catch(() => {
-          this.$router.push(`/insights?tab=modelling`);
+          this.$router.push({
+            path: '/insights',
+            query: {
+              tab: 'modelling',
+              stock: encodeURIComponent(stock)
+            }
+          });
         });
     }
+
   }
 };
 </script>

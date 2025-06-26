@@ -84,7 +84,7 @@
       </div>
     </section>
     <!-- Floating CTA Button -->
-    <button class="floating-cta" @click="focusSearchBar">
+    <button style="position:fixed; bottom:10px; right:10px; z-index:9999; background:red; color:white;"class="floating-cta" @click="focusSearchBar">
       Try it for free?
     </button>
 

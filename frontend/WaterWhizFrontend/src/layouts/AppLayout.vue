@@ -76,7 +76,7 @@ export default {
     position: relative;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: visible;
 
     & > header {
       position: fixed;
