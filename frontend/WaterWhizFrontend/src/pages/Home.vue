@@ -25,15 +25,16 @@
                   @blur="hideDropdownWithDelay"
                   @input="debounceFilter"
                 />
-                <div v-if="showInfoPopup" class="info-popup">
-                  First select a stock to start
-                </div>
                 <ul v-if="showDropdown && filteredStocks.length > 0" class="dropdown-list">
                   <li v-for="stock in filteredStocks" :key="stock" @mousedown="selectStock(stock)">
                     {{ stock }}
                   </li>
                 </ul>
+                <div v-if="showInfoPopup" class="pop-up-near-search">
+                  You need to select a stock first
+                </div>
               </div>
+              <div v-if="showOverlay" class="screen-overlay" @click="hideFocusEffect"></div>
             </div>
           </div>
         </div>
@@ -91,6 +92,10 @@
       <button class="floating-cta" @click="focusSearchBar">
         Try it for free?
       </button>
+
+      <div v-if="showInfoPopup" class="info-popup">
+        First select a stock to start
+      </div>
     </div>
   </div>
 </template>
@@ -107,6 +112,7 @@ export default {
       filteredStocks: [],
       showDropdown: false,
       showInfoPopup: false,
+      showOverlay: false,
       websiteContentData: [
         {
           image: require("@/assets/images/home/Swim2x.png"),
@@ -242,21 +248,29 @@ export default {
       this.$router.push(path);
     },
     focusSearchBar() {
-      const el = document.querySelector('.search-bar');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const el= document.querySelector('.search-bar');
+      if(el){
+        el.scrollIntoView({behavior: 'smooth',block: 'center'});
 
-        // Slight delay to ensure the element is in view before focusing
-        setTimeout(() => {
+        setTimeout(()=>{
           el.focus();
-        }, 500);
+        },500);
       }
+      this.showOverlay= true;
+      this.showInfoPopup= true;
 
-      this.showInfoPopup = true;
+      setTimeout(()=>{
+        this.showOverlay= false;
+        this.showInfoPopup= false;
+      },3000);
+    },
 
-      setTimeout(() => {
-        this.showInfoPopup = false;
-      }, 3000);
+    showFocusEffect(){
+      this.showOverlay= true;
+    },
+
+    hideFocusEffect(){
+      this.showOverlay= false;
     }
 
   }
@@ -763,7 +777,7 @@ export default {
 
 .floating-elements {
   position: fixed;
-  bottom: 80px;
+  bottom: 20px;
   right: 20px;
   z-index: 99999;
   pointer-events: none; // makes sure container doesn’t interfere
@@ -804,6 +818,55 @@ export default {
   10%  { opacity: 1; transform: translateY(0); }
   90%  { opacity: 1; transform: translateY(0); }
   100% { opacity: 0; transform: translateY(10px); }
+}
+
+
+//for the try it out button and overlay
+
+.popup-near-search {
+  position: absolute;
+  top: 50px;
+  left: 100%;
+  margin-left: 10px;
+  background-color: #111827;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  z-index: 1001;
+  white-space: nowrap;
+  animation: fadeInOut 3s ease-in-out;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 10px;
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 8px solid #111827;
+  }
+}
+
+//style for the focus Glow and overlay 
+
+.search-bar:focus {
+  outline: none;
+  box-shadow: 0 0 12px 4px #a9c0e8;
+  background: linear-gradient(to right, #ffad15, #d97700); // Keep the highlight
+  transition: all 0.3s ease;
+}
+
+.screen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.6); // semi-transparent dark
+  z-index: 1000;
 }
 
 

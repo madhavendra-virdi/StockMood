@@ -9,10 +9,10 @@
         <h4>Your Favorite Stocks</h4>
         <ul>
           <li v-for="stock in favoriteStocks" :key="stock">
-            <router-link :to="`/insights?stock=${encodeURIComponent(stock)}`">
-
-              <i class="fas fa-star star-icon"></i> {{ stock }}
-            </router-link>
+            <i class="fas fa-star star-icon"></i>
+            <span class="clickable-stock" @click="navigateWithStock(stock)">
+              {{ stock }}
+            </span>
           </li>
         </ul>
 
@@ -80,8 +80,22 @@ export default {
       });
 
     },
-    
-
+    navigateWithStock(stock){
+      //fetch stock from the backend like we do for home.vue
+      axios.get(`/api/stock/${encodeURIComponent(stock)}`)
+      .then(res=> {
+        if(res.data.stock_details?.length>0){
+          const selected= res.data.stock_details[0];
+          sessionStorage.setItem("selectedStock",JSON.stringify(selected));
+          this.$router.push({path: '/insights',query:{tab:'overview'}});
+        }else{
+          this.$message.error("Stock not found.");
+        }
+      })
+      .catch(()=>{
+        this.$message.error("Error Loading Stock.");
+      });
+    }
   }
 };
 </script>
@@ -189,6 +203,14 @@ export default {
 
 .logout-btn:hover {
   background-color: #c0392b;
+}
+
+.clickable-stock {
+  cursor: pointer;
+  color: #007bff;
+}
+.clickable-stock:hover {
+  text-decoration: underline;
 }
 
 </style>
