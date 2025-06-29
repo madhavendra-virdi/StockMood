@@ -50,7 +50,7 @@
     </div>
         
 
-    <!-- FinChat-style Feature Section 1 -->
+    <!-- Feature Section 1 -->
     <section class="feature_section">
       <div class="feature_content">
         <div class="text_side">
@@ -69,7 +69,7 @@
       </div>
     </section>
 
-    <!-- FinChat-style Feature Section 2 -->
+    <!-- Feature Section 2 -->
     <section class="feature_section alt">
       <div class="feature_content">
         <div class="image_side">
@@ -469,7 +469,7 @@ export default {
     justify-content: center;
     width: 100%;
     margin-top: 0;
-    z-index: 1;
+    z-index: 2;
 
     .text_box_child {
       // backdrop-filter: blur(5px);
@@ -634,70 +634,7 @@ export default {
   }
 }
 
-// .container {
-//   text-align: center;
-//   animation: fadeIn 2s ease-in-out;
-// }
 
-// h1 {
-//   font-size: 72px;
-//   color: #58a4db;
-//   margin: 0;
-//   animation: float 3s ease-in-out infinite;
-// }
-
-// p {
-//   font-size: 20px;
-//   color: #666;
-//   margin: 10px 0 20px 0;
-//   animation: fadeIn 3s ease-in-out;
-// }
-
-// a {
-//   color: #58a4db;
-//   text-decoration: none;
-//   padding: 10px 20px;
-//   border: 2px solid #58a4db;
-//   border-radius: 25px;
-//   font-size: 18px;
-//   transition: background-color 0.3s ease, color 0.3s ease;
-//   animation: slideIn 1.5s ease-in-out;
-// }
-
-// a:hover {
-//   background-color: #58a4db;
-//   color: white;
-// }
-
-// @keyframes fadeIn {
-//   from {
-//     opacity: 0;
-//   }
-//   to {
-//     opacity: 1;
-//   }
-// }
-
-// @keyframes float {
-//   0%,
-//   100% {
-//     transform: translateY(0);
-//   }
-//   50% {
-//     transform: translateY(-10px);
-//   }
-// }
-
-// @keyframes slideIn {
-//   from {
-//     transform: translateY(20px);
-//     opacity: 0;
-//   }
-//   to {
-//     transform: translateY(0);
-//     opacity: 1;
-//   }
-// }
 
 @media (max-width: 768px) {
   .text_box {
@@ -761,18 +698,12 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-
-
-
-.video-content {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
   position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
+
 
 
 .floating-elements {

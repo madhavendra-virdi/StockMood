@@ -83,18 +83,40 @@ export default {
     navigateWithStock(stock){
       //fetch stock from the backend like we do for home.vue
       axios.get(`/api/stock/${encodeURIComponent(stock)}`)
-      .then(res=> {
-        if(res.data.stock_details?.length>0){
-          const selected= res.data.stock_details[0];
-          sessionStorage.setItem("selectedStock",JSON.stringify(selected));
-          this.$router.push({path: '/insights',query:{tab:'overview'}});
-        }else{
-          this.$message.error("Stock not found.");
-        }
-      })
-      .catch(()=>{
-        this.$message.error("Error Loading Stock.");
-      });
+        .then(res => {
+          if (res.data.stock_details?.length > 0) {
+            const selected = res.data.stock_details[0];
+            sessionStorage.setItem("selectedStock", JSON.stringify(selected));
+
+            // Fetch sentiment data
+            axios.get(`/api/sentiment/${encodeURIComponent(stock)}`)
+              .then(sentRes => {
+                sessionStorage.setItem("stockSentiment", JSON.stringify(sentRes.data));
+
+                // Fetch industry data
+                axios.get(`/api/industry/${encodeURIComponent(stock)}`)
+                  .then(industryRes => {
+                    sessionStorage.setItem("stocksInSubIndustry", JSON.stringify(industryRes.data));
+
+                    // Navigate to insights page once all is set
+                    this.$router.push({ path: '/insights', query: { tab: 'overview' } });
+                  })
+                  .catch(() => {
+                    this.$message.error("Error loading industry data.");
+                  });
+
+              })
+              .catch(() => {
+                this.$message.error("Error loading sentiment data.");
+              });
+
+          } else {
+            this.$message.error("Stock not found.");
+          }
+        })
+        .catch(() => {
+          this.$message.error("Error loading stock.");
+        });
     }
   }
 };
